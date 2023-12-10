@@ -1714,3 +1714,214 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     const inputField = document.querySelector(".header__navigation-search-field");
+//     const listContainer = document.querySelector(".autocomplete__list");
+// });
+// document.addEventListener("DOMContentLoaded", () => {
+//   const inputField = document.querySelector(".header__navigation-search-field");
+//   const listContainer = document.querySelector(".autocomplete-list");
+//   const options = [
+//     "Electronics",
+//     "Clothing",
+//     "Books",
+//     "Toys & Games",
+//     "Home & Kitchen",
+//     "Beauty & Personal Care",
+//     "Sports & Outdoors",
+//     "Health & Household",
+//     "Tools & Home Improvement",
+//     "Automotive",
+//     "Grocery & Gourmet Food",
+//     "Baby",
+//     "Movies & TV",
+//     "Pet Supplies",
+//     "Office Products",
+//     "Handmade",
+//     "Amazon Launchpad",
+//     "Industrial & Scientific",
+//     "Digital Music",
+//     "Arts, Crafts & Sewing",
+//     "Collectibles & Fine Art",
+//     "Gift Cards",
+//     "Electronics",
+//     "Computers",
+//     "Appliances",
+//     "Books",
+//     "Movies",
+//     "Music",
+//     "Clothing",
+//     "Footwear",
+//     "Accessories",
+//     "Jewelry",
+//     "Food",
+//     "Toys",
+//     "Games",
+//     "Home",
+//     "Kitchen",
+//     "Furniture",
+//     "Health",
+//     "Beauty",
+//     "Sports",
+//     "Outdoors",
+//     "Automotive",
+//     "Industrial",
+//     "Pet Supplies",
+//     "Tools",
+//     "Grocery",
+//     "Baby",
+//     "Kids",
+//     "Office",
+//     "School Supplies",
+//   ];
+
+//   inputField.addEventListener("input", () => {
+
+//     const inputValue = this.value.toLowerCase();
+//     let matches = [];
+
+//     if (inputValue.length > 0) {
+//       matches = options.filter((option) =>
+//         option.toLowerCase().startsWith(inputValue)
+//       );
+//     }
+
+//     displayMatches(matches);
+//   });
+
+//   function displayMatches(matches) {
+//     if (matches.length > 0) {
+//       const listItems = matches.map((match) => `<div>${match}</div>`).join("");
+//       listContainer.innerHTML = listItems;
+//     } else {
+//       listContainer.innerHTML = "";
+//     }
+//   }
+
+//   listContainer.addEventListener("click", function (e) {
+//     if (e.target.tagName === "DIV") {
+//       inputField.value = e.target.textContent;
+//       listContainer.innerHTML = "";
+//     }
+//   });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const inputField = document.querySelector(".header__navigation-search-field");
+  const listContainer = document.querySelector(".autocomplete__list");
+  const options = [
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Toys & Games",
+    "Home & Kitchen",
+    "Beauty & Personal Care",
+    "Sports & Outdoors",
+    "Health & Household",
+    "Tools & Home Improvement",
+    "Automotive",
+    "Grocery & Gourmet Food",
+    "Baby",
+    "Movies & TV",
+    "Pet Supplies",
+    "Office Products",
+    "Handmade",
+    "Amazon Launchpad",
+    "Industrial & Scientific",
+    "Digital Music",
+    "Arts, Crafts & Sewing",
+    "Collectibles & Fine Art",
+    "Gift Cards",
+    "Electronics",
+    "Computers",
+    "Appliances",
+    "Books",
+    "Movies",
+    "Music",
+    "Clothing",
+    "Footwear",
+    "Accessories",
+    "Jewelry",
+    "Food",
+    "Toys",
+    "Games",
+    "Home",
+    "Kitchen",
+    "Furniture",
+    "Health",
+    "Beauty",
+    "Sports",
+    "Outdoors",
+    "Automotive",
+    "Industrial",
+    "Pet Supplies",
+    "Tools",
+    "Grocery",
+    "Baby",
+    "Kids",
+    "Office",
+    "School Supplies",
+  ];
+
+  inputField.addEventListener("input", function () {
+    const inputValue = this.value.toLowerCase();
+    let matches = [];
+
+    if (inputValue.length > 0) {
+      matches = options.filter((option) =>
+        option.toLowerCase().startsWith(inputValue)
+      );
+    }
+
+    displayMatches(matches);
+  });
+
+  function displayMatches(matches) {
+    if (matches.length > 0) {
+      const listItems = matches.map((match) => `<div>${match}</div>`).join("");
+      listContainer.innerHTML = listItems;
+    } else {
+      listContainer.innerHTML = "";
+    }
+  }
+
+  listContainer.addEventListener("click", function (e) {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+
+  inputField.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === "Tab") {
+      const firstMatch = listContainer.querySelector("div");
+      if (firstMatch) {
+        inputField.value = firstMatch.textContent;
+        listContainer.innerHTML = "";
+        inputField.focus();
+      }
+    }
+  });
+
+  listContainer.addEventListener("click", function (e) {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+});

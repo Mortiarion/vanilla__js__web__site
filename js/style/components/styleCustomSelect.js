@@ -14,6 +14,7 @@ const styleCustomSelect = `
         font-size: 12px;
         white-space: nowrap;
         font-weight: 600;
+        transition: 0.5s;
     }
     .custom__select-trigger:hover {
         background-color: var(--bg-trigger);
@@ -36,7 +37,7 @@ const styleCustomSelect = `
         left: 0;
         border: 1px solid #6f6f6f;
         background-color: #fff;
-        z-index: 1;
+        z-index: 3;
         display: none;
         height: 400px;
         overflow: auto;
@@ -48,7 +49,11 @@ const styleCustomSelect = `
     .custom__select-option {
         position: relative;
         padding: 0.8rem;
-        border-radius: 0.4rem;
+        transition: 0.5s;
+    }
+    .custom__select-option:hover {
+        background-color: var(--select);
+        cursor: pointer;
     }
 
 `;

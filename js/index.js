@@ -4,6 +4,7 @@ import createdElements from "./components/createdElements.js";
 import "./style/common__style.js";
 import "./components/customSelect.js";
 import "./../fonts/fontsLink.js";
+import "./components/createAutoCompleteInput.js"
 
 const wrapper = createdElements("div", "wrapper");
 
@@ -21,7 +22,7 @@ const headerTopRight = createdElements("div", "header__top-right", headerTop);
 const headerNavigationLogo = createdElementsAttributes(
   "a",
   "header__navigation-logo",
-  { href: "#" },
+  { href: "#", title: "AMAZON(а муз лон)" },
   headerTopLeft
 );
 const logo = createdElements("span", "logo", headerNavigationLogo);
@@ -29,7 +30,7 @@ const logo = createdElements("span", "logo", headerNavigationLogo);
 const headerNavigationLocation = createdElementsAttributes(
   "a",
   "header__navigation-location",
-  { href: "#" },
+  { href: "#", title: "select your region/country" },
   headerTopLeft
 );
 const headerNavigationLocationIcon = createdElements(
@@ -79,14 +80,14 @@ const headerNavigationFormRight = createdElements(
 const headerNavigationSearchField = createdElementsAttributes(
   "input",
   "header__navigation-search-field",
-  { type: "text", title: "Пошук...", placeholder: "Пошук по Амазон" },
+  { type: "text", title: "Search...", placeholder: "Search on Amazon" },
   headerNavigationFormFill
 );
 
 const headerNavigationSearchBtnSubmit = createdElementsAttributes(
   "buttom",
   "header__navigation-search-btn",
-  { type: "submit", title: "Тиць" },
+  { type: "submit", title: "Go..." },
   headerNavigationFormRight
 );
 const headerNavigationSearchImage = createdElements(
@@ -98,7 +99,7 @@ const headerNavigationSearchImage = createdElements(
 const headerNavigationRightLanguage = createdElementsAttributes(
   "a",
   "header__navigation-right-language",
-  { href: "#", title: "Виберіть мову" },
+  { href: "#", title: "Select language" },
   headerTopRight
 );
 const headerNavigationRightFlag = createdElements(
@@ -109,7 +110,7 @@ const headerNavigationRightFlag = createdElements(
 const language = createdElementsTextContent(
   "span",
   "language",
-  "UA",
+  "EN",
   headerNavigationRightLanguage
 );
 const headerNavigationRightTriangle = createdElements(
@@ -121,7 +122,7 @@ const headerNavigationRightTriangle = createdElements(
 const headerNavigationRightSign = createdElementsAttributes(
   "a",
   "header__navigation-right-sign",
-  { href: "#", title: "Авторизуйтесь" },
+  { href: "#", title: "Log in" },
   headerTopRight
 );
 const headerSignOne = createdElementsTextContent(
@@ -145,7 +146,7 @@ const headerNavigationRightTriangleSign = createdElements(
 const headerNavigationRightOrder = createdElementsAttributes(
   "a",
   "header__navigation-right-order",
-  { href: "#", title: "Авторизуйтесь" },
+  { href: "#", title: "Log in" },
   headerTopRight
 );
 const orderOne = createdElementsTextContent(
@@ -164,7 +165,7 @@ const orderTwo = createdElementsTextContent(
 const headerNavigationRightCart = createdElementsAttributes(
   "a",
   "header__navigation-right-cart",
-  { href: "#", title: "Кошик" },
+  { href: "#", title: "Cart" },
   headerTopRight
 );
 const headerNavigationRightCartImage = createdElements(
@@ -183,4 +184,12 @@ const cartTwo = createdElementsTextContent(
   "cart__two",
   "Cart",
   headerNavigationRightCart
+);
+
+
+
+const autoComplete = createdElements(
+  "div",
+  "autocomplete__list",
+  headerNavigationFormFill
 );

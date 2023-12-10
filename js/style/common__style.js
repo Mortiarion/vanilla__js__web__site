@@ -18,6 +18,7 @@ const styles = `
     --bg-trigger: #d4d4d4;
     --triangle-header-right: #a7acb2;
     --cart-zero: #ffdfd7;
+    --search: #ffcabd;
   }
   body {
     padding: 0;
@@ -27,6 +28,14 @@ const styles = `
     line-height: 1;
     letter-spacing: 0px;
     font-family: var(--main-font);
+  }
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  .main {
+    flex: 1 1 auto;
   }
   a {
     color: var(--black);
