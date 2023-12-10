@@ -10,12 +10,14 @@ const styles = `
     --black: #000000;
     --medium: #555555;
     --main-font: "Montserrat", sans-serif;
-    --second-fons: "Raleway", sans-serif;
+    --second-fonts: "Raleway", sans-serif;
     --triangle: hsl(0, 0%, 40%);
     --btn: #ffdfd7;
     --select: #e6e6e6;
     --border-select: #cdcdcd;
     --bg-trigger: #d4d4d4;
+    --triangle-header-right: #a7acb2;
+    --cart-zero: #ffdfd7;
   }
   body {
     padding: 0;
@@ -49,13 +51,34 @@ const styles = `
     z-index: 1;
     pointer-events: none;
   }
+  .header__navigation-logo,
+  .header__navigation-location,
+  .header__navigation-right-language,
+  .header__navigation-right-sign,
+  .header__navigation-right-order,
+  .header__navigation-right-cart {
+    border: 1px solid transparent;
+    transition: border 0.5s ease;
+    border-radius: 4px;
+  }
+  .header__navigation-logo:hover,
+  .header__navigation-location:hover,
+  .header__navigation-right-language:hover,
+  .header__navigation-right-sign:hover,
+  .header__navigation-right-order:hover,
+  .header__navigation-right-cart:hover {
+    border: 1px solid var(--white);
+    border-radius: 4px;
+    transition: border 0.5s ease;
+  }
+
 `;
 
-function addStylesToPage(styles, styleCustomSelect) {
+function addStylesToPage(styles) {
   const styleElement = document.createElement("style");
   styleElement.type = "text/css";
-  styleElement.appendChild(document.createTextNode(styles, styleCustomSelect));
-  document.head.appendChild(styleElement, styleCustomSelect);
+  styleElement.appendChild(document.createTextNode(styles));
+  document.head.appendChild(styleElement);
 
 }
 
