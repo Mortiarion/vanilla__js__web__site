@@ -1,11 +1,9 @@
 const headerStyle = `
     .header__top {
         background-color: var(--background-header);
-        height: 60px;
         display: flex;
         align-items: center;
-        padding: 0 10px;
-        justify-content: space-between;
+        padding: 5px 10px;
     }
     .header__navigation-logo {
         width: 113px;
@@ -21,14 +19,18 @@ const headerStyle = `
         display: inline-block;
         background-position: 95.5% 53.5%;
     }
+    .header__top-center {
+        width: 100%;
+    }
     .header__navigation-location {
         display: flex;
         align-items: center;
         padding: 0 12px;
+        margin: 0 10px 0 0;
     }
     .header__navigation-location-icon {
         background-image: url("./img/nav-sprite-global-1x-reorg.png");
-        width: 15px;
+        width: 20px;
         height: 18px;
         display: inline-block;
         background-repeat: no-repeat;
@@ -38,6 +40,7 @@ const headerStyle = `
     .header__navigation-wrapper {
         display: flex;
         flex-direction: column;
+        width: 100%;
     }
     .header__navigation-deliver {
         font-size: 12px;
@@ -53,20 +56,49 @@ const headerStyle = `
     }
     .header__navigation-form {
         display: flex;
+        height: 40px;
+    }
+    .header__navigation-form:hover {
+        box-shadow: 0 2px 6px 0 #000;
+    }
+    .header__navigation-form-fill {
+        width: 100%;
+    }
+    .header__navigation-search-field {
+        width: 100%;
+        height: 100%;
+        padding-left: 15px;
     }
 
     .header__navigation-search-btn {
-        width: 50px;
-        height: 50px;
+        width: 45px;
+        height: 40px;
         display: inline-block;
+        background-color: var(--btn);
+        border-radius: 0 4px 4px 0;
+        border-left: 1px solid var(--border-select);
+        cursor: pointer;
+    }
+    .header__navigation-search-btn:hover {
+        background-color: #ffcabd;
     }
     .header__navigation-search-image {
-        background-image: url("./img/nav-sprite-global-1x-reorg.png");
+        background-image: url("./img/nav-sprite-global-2x-reorg.png");
         background-repeat: no-repeat;
         width: 100%;
         height: 100%;
         display: inline-block;
-        background-position: 0% 66%;
+        background-position: -1% 68.3%;
+        background-size: 350px;
+        pointer-events: none;
+    }
+
+
+    .header__top-right {
+        display: flex;
+    }
+    .header__navigation-right-flag {
+        background-image: url("./img/nav-sprite-global-country.png")
     }
 `;
 

@@ -1530,3 +1530,187 @@ function addGoogleFontsLinks() {
 
 // Виклик функції для додавання посилань в <head>
 addGoogleFontsLinks();
+
+
+
+
+
+
+
+// /* Стилі для основних браузерів */
+
+// /* Стилі для скролбару WebKit (Chrome, Safari) */
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background-color: #888;
+//   border-radius: 5px;
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//   background-color: #555;
+// }
+
+// /* Стилі для скролбару Firefox */
+// /* Використовуємо спеціальний селектор для Firefox */
+// /* Можна також використовувати -moz-scrollbar */
+// * {
+//   scrollbar-width: thin;
+//   scrollbar-color: #888 transparent;
+// }
+
+// *::-moz-scrollbar-thumb {
+//   background-color: #888;
+//   border-radius: 5px;
+// }
+
+// *::-moz-scrollbar-thumb:hover {
+//   background-color: #555;
+// }
+
+
+
+
+function setCustomScrollBarStyles() {
+  const userAgent = window.navigator.userAgent;
+
+  // Перевірка наявності скролбару WebKit (Chrome, Safari)
+  if (userAgent.includes("Chrome") || userAgent.includes("Safari")) {
+    document.documentElement.style.setProperty("--scrollbar-width", "10px"); // Задаємо ширину
+    document.documentElement.style.setProperty(
+      "--scrollbar-thumb-color",
+      "#888"
+    ); // Колір thumb (повзунка)
+    document.documentElement.style.setProperty(
+      "--scrollbar-thumb-hover-color",
+      "#555"
+    ); // Колір thumb при наведенні
+  }
+
+  // Перевірка наявності скролбару Firefox
+  if (userAgent.includes("Firefox")) {
+    document.documentElement.style.setProperty("--scrollbar-width", "thin");
+    document.documentElement.style.setProperty(
+      "--scrollbar-color",
+      "#888 transparent"
+    );
+    document.documentElement.style.setProperty(
+      "--scrollbar-thumb-color",
+      "#888"
+    );
+    document.documentElement.style.setProperty(
+      "--scrollbar-thumb-hover-color",
+      "#555"
+    );
+  }
+}
+
+// Виклик функції для встановлення стилів скролбару
+setCustomScrollBarStyles();
+
+// /* CSS змінні для стилізації скролбарів */
+// :root {
+//   --scrollbar-width: 10px;
+//   --scrollbar-thumb-color: #888;
+//   --scrollbar-thumb-hover-color: #555;
+//   --scrollbar-color: #888 transparent;
+// }
+
+// /* Стилі для скролбару WebKit (Chrome, Safari) */
+// ::-webkit-scrollbar {
+//   width: var(--scrollbar-width);
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background-color: var(--scrollbar-thumb-color);
+//   border-radius: 5px;
+// }
+
+// ::-webkit-scrollbar-thumb:hover {
+//   background-color: var(--scrollbar-thumb-hover-color);
+// }
+
+// /* Стилі для скролбару Firefox */
+// * {
+//   scrollbar-width: var(--scrollbar-width);
+//   scrollbar-color: var(--scrollbar-color);
+// }
+
+// *::-moz-scrollbar-thumb {
+//   background-color: var(--scrollbar-thumb-color);
+//   border-radius: 5px;
+// }
+
+// *::-moz-scrollbar-thumb:hover {
+//   background-color: var(--scrollbar-thumb-hover-color);
+// }
+
+
+
+
+
+
+
+//     /* Встановлюємо ширину скролбару та його колір */
+// * {
+//   scrollbar-width: thin; /* Товстий скролбар */
+//   scrollbar-color: #888 transparent; /* Колір thumb і track */
+// }
+
+// /* Стилі для thumb (повзунка) */
+// *::-moz-scrollbar-thumb {
+//   background-color: #888; /* Колір thumb */
+// }
+
+// /* Стилі для thumb при наведенні */
+// *::-moz-scrollbar-thumb:hover {
+//   background-color: #555; /* Колір thumb при наведенні */
+// }
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const inputField = document.getElementById("autocomplete-input");
+  const listContainer = document.getElementById("autocomplete-list");
+  const options = [
+    /* ваші варіанти автозаповнення */
+  ];
+
+  inputField.addEventListener("input", function () {
+    const inputValue = this.value.toLowerCase();
+    let matches = [];
+
+    if (inputValue.length > 0) {
+      matches = options.filter((option) =>
+        option.toLowerCase().startsWith(inputValue)
+      );
+    }
+
+    displayMatches(matches);
+  });
+
+  function displayMatches(matches) {
+    if (matches.length > 0) {
+      const listItems = matches.map((match) => `<div>${match}</div>`).join("");
+      listContainer.innerHTML = listItems;
+    } else {
+      listContainer.innerHTML = "";
+    }
+  }
+
+  listContainer.addEventListener("click", function (e) {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+    }
+  });
+});
