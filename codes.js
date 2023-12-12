@@ -1820,8 +1820,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 document.addEventListener("DOMContentLoaded", () => {
+  // Код, який ми хочемо виконати, коли структура DOM завантажена і готова для маніпуляцій.
   const inputField = document.querySelector(".header__navigation-search-field");
   const listContainer = document.querySelector(".autocomplete__list");
+
+  let selectedOptionIndex = -1;
+
   const options = [
     "Electronics",
     "Clothing",
@@ -1876,8 +1880,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "School Supplies",
   ];
 
-  inputField.addEventListener("input", function () {
-    const inputValue = this.value.toLowerCase();
+  inputField.addEventListener("input", () => {
+    const inputValue = inputField.value.toLowerCase();
     let matches = [];
 
     if (inputValue.length > 0) {
@@ -1889,16 +1893,17 @@ document.addEventListener("DOMContentLoaded", () => {
     displayMatches(matches);
   });
 
-  function displayMatches(matches) {
+  const displayMatches = (matches) => {
     if (matches.length > 0) {
       const listItems = matches.map((match) => `<div>${match}</div>`).join("");
       listContainer.innerHTML = listItems;
+      selectedOptionIndex = -1;
     } else {
       listContainer.innerHTML = "";
     }
-  }
+  };
 
-  listContainer.addEventListener("click", function (e) {
+  listContainer.addEventListener("click", (e) => {
     if (e.target.tagName === "DIV") {
       inputField.value = e.target.textContent;
       listContainer.innerHTML = "";
@@ -1914,10 +1919,31 @@ document.addEventListener("DOMContentLoaded", () => {
         listContainer.innerHTML = "";
         inputField.focus();
       }
+    } else if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      const listItems = listContainer.querySelectorAll("div");
+      if (listItems.length > 0) {
+        if (e.key === "ArrowUp" && selectedOptionIndex > 0) {
+          selectedOptionIndex--;
+        } else if (
+          e.key === "ArrowDown" &&
+          selectedOptionIndex < listItems.length - 1
+        ) {
+          selectedOptionIndex++;
+        }
+
+        listItems.forEach((item, index) => {
+          if (index === selectedOptionIndex) {
+            item.classList.add("selected");
+            inputField.value = item.textContent;
+          } else {
+            item.classList.remove("selected");
+          }
+        });
+      }
     }
   });
 
-  listContainer.addEventListener("click", function (e) {
+  listContainer.addEventListener("click", (e) => {
     if (e.target.tagName === "DIV") {
       inputField.value = e.target.textContent;
       listContainer.innerHTML = "";
@@ -1925,3 +1951,835 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Код, який ми хочемо виконати, коли структура DOM завантажена і готова для маніпуляцій.
+  const inputField = document.querySelector(".header__navigation-search-field");
+  const listContainer = document.querySelector(".autocomplete__list");
+
+  let selectedOptionIndex = -1;
+
+  const options = [
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Toys & Games",
+    "Home & Kitchen",
+    "Beauty & Personal Care",
+    "Sports & Outdoors",
+    "Health & Household",
+    "Tools & Home Improvement",
+    "Automotive",
+    "Grocery & Gourmet Food",
+    "Baby",
+    "Movies & TV",
+    "Pet Supplies",
+    "Office Products",
+    "Handmade",
+    "Amazon Launchpad",
+    "Industrial & Scientific",
+    "Digital Music",
+    "Arts, Crafts & Sewing",
+    "Collectibles & Fine Art",
+    "Gift Cards",
+    "Electronics",
+    "Computers",
+    "Appliances",
+    "Books",
+    "Movies",
+    "Music",
+    "Clothing",
+    "Footwear",
+    "Accessories",
+    "Jewelry",
+    "Food",
+    "Toys",
+    "Games",
+    "Home",
+    "Kitchen",
+    "Furniture",
+    "Health",
+    "Beauty",
+    "Sports",
+    "Outdoors",
+    "Automotive",
+    "Industrial",
+    "Pet Supplies",
+    "Tools",
+    "Grocery",
+    "Baby",
+    "Kids",
+    "Office",
+    "School Supplies",
+  ];
+
+  inputField.addEventListener("input", () => {
+    const inputValue = inputField.value.toLowerCase();
+    let matches = [];
+
+    if (inputValue.length > 0) {
+      matches = options.filter((option) =>
+        option.toLowerCase().startsWith(inputValue)
+      );
+    }
+
+    displayMatches(matches);
+  });
+
+  const displayMatches = (matches) => {
+    if (matches.length > 0) {
+      const listItems = matches.map((match) => `<div>${match}</div>`).join("");
+      listContainer.innerHTML = listItems;
+      selectedOptionIndex = -1;
+    } else {
+      listContainer.innerHTML = "";
+    }
+  };
+
+  listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+
+  inputField.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === "Tab") {
+      if (selectedOptionIndex >= 0) {
+        const listItems = listContainer.querySelectorAll("div");
+        if (listItems.length > 0) {
+          inputField.value = listItems[selectedOptionIndex].textContent;
+          listContainer.innerHTML = "";
+          inputField.focus();
+        }
+      }
+    } else if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      const listItems = listContainer.querySelectorAll("div");
+      if (listItems.length > 0) {
+        if (e.key === "ArrowUp" && selectedOptionIndex > 0) {
+          selectedOptionIndex--;
+        } else if (
+          e.key === "ArrowDown" &&
+          selectedOptionIndex < listItems.length - 1
+        ) {
+          selectedOptionIndex++;
+        }
+
+        listItems.forEach((item, index) => {
+          if (index === selectedOptionIndex) {
+            item.classList.add("selected");
+            inputField.value = item.textContent;
+          } else {
+            item.classList.remove("selected");
+          }
+        });
+      }
+    }
+  });
+
+  listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Код, який ми хочемо виконати, коли структура DOM завантажена і готова для маніпуляцій.
+  const inputField = document.querySelector(".header__navigation-search-field");
+  const listContainer = document.querySelector(".autocomplete__list");
+
+  let selectedOptionIndex = -1;
+  let noMatches = true;
+
+  const options = [
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Toys & Games",
+    "Home & Kitchen",
+    "Beauty & Personal Care",
+    "Sports & Outdoors",
+    "Health & Household",
+    "Tools & Home Improvement",
+    "Automotive",
+    "Grocery & Gourmet Food",
+    "Baby",
+    "Movies & TV",
+    "Pet Supplies",
+    "Office Products",
+    "Handmade",
+    "Amazon Launchpad",
+    "Industrial & Scientific",
+    "Digital Music",
+    "Arts, Crafts & Sewing",
+    "Collectibles & Fine Art",
+    "Gift Cards",
+    "Electronics",
+    "Computers",
+    "Appliances",
+    "Books",
+    "Movies",
+    "Music",
+    "Clothing",
+    "Footwear",
+    "Accessories",
+    "Jewelry",
+    "Food",
+    "Toys",
+    "Games",
+    "Home",
+    "Kitchen",
+    "Furniture",
+    "Health",
+    "Beauty",
+    "Sports",
+    "Outdoors",
+    "Automotive",
+    "Industrial",
+    "Pet Supplies",
+    "Tools",
+    "Grocery",
+    "Baby",
+    "Kids",
+    "Office",
+    "School Supplies",
+  ];
+
+  inputField.addEventListener("input", () => {
+    const inputValue = inputField.value.toLowerCase();
+    let matches = [];
+
+    if (inputValue.length > 0) {
+      matches = options.filter((option) =>
+        option.toLowerCase().startsWith(inputValue)
+      );
+    }
+
+    displayMatches(matches);
+  });
+
+  const displayMatches = (matches) => {
+    if (matches.length > 0) {
+      noMatches = false;
+      const listItems = matches.map((match) => `<div>${match}</div>`).join("");
+      listContainer.innerHTML = listItems;
+      listContainer.classList.add("show");
+      listContainer.classList.remove("hide");
+      selectedOptionIndex = -1;
+    } else {
+      if (noMatches) {
+        listContainer.innerHTML = "<div>No matches found...</div>";
+        listContainer.classList.remove("show");
+        listContainer.classList.add("hide");
+      }
+    }
+  };
+
+  listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+
+  inputField.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === "Tab") {
+      if (selectedOptionIndex >= 0) {
+        const listItems = listContainer.querySelectorAll("div");
+        if (listItems.length > 0) {
+          inputField.value = listItems[selectedOptionIndex].textContent;
+          listContainer.innerHTML = "";
+          inputField.focus();
+        }
+      }
+    } else if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      const listItems = listContainer.querySelectorAll("div");
+      if (listItems.length > 0) {
+        if (e.key === "ArrowUp" && selectedOptionIndex > 0) {
+          selectedOptionIndex--;
+        } else if (
+          e.key === "ArrowDown" &&
+          selectedOptionIndex < listItems.length - 1
+        ) {
+          selectedOptionIndex++;
+        }
+
+        listItems.forEach((item, index) => {
+          if (index === selectedOptionIndex) {
+            item.classList.add("selected");
+            inputField.value = item.textContent;
+          } else {
+            item.classList.remove("selected");
+          }
+        });
+      }
+    }
+  });
+
+  listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+
+  const hideList = () => {
+    listContainer.classList.remove("show");
+    listContainer.classList.add("hide");
+  };
+
+  const showList = () => {
+    listContainer.classList.remove("hide");
+    listContainer.classList.add("show");
+  };
+
+  const updateListVisibility = (matches) => {
+    if (matches.length > 0) {
+      displayMatches(matches);
+      showList();
+    } else {
+      hideList();
+    }
+  };
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const inputField = document.querySelector(".header__navigation-search-field");
+  const listContainer = document.querySelector(".autocomplete__list");
+
+  let selectedOptionIndex = -1;
+  let options = new Set([
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Toys & Games",
+    "Home & Kitchen",
+    "Beauty & Personal Care",
+    "Sports & Outdoors",
+    "Health & Household",
+    "Tools & Home Improvement",
+    "Automotive",
+    "Grocery & Gourmet Food",
+    "Baby",
+    "Movies & TV",
+    "Pet Supplies",
+    "Office Products",
+    "Handmade",
+    "Amazon Launchpad",
+    "Industrial & Scientific",
+    "Digital Music",
+    "Arts, Crafts & Sewing",
+    "Collectibles & Fine Art",
+    "Gift Cards",
+    "Electronics",
+    "Computers",
+    "Appliances",
+    "Books",
+    "Movies",
+    "Music",
+    "Clothing",
+    "Footwear",
+    "Accessories",
+    "Jewelry",
+    "Food",
+    "Toys",
+    "Games",
+    "Home",
+    "Kitchen",
+    "Furniture",
+    "Health",
+    "Beauty",
+    "Sports",
+    "Outdoors",
+    "Automotive",
+    "Industrial",
+    "Pet Supplies",
+    "Tools",
+    "Grocery",
+    "Baby",
+    "Kids",
+    "Office",
+    "School Supplies",
+    "Електроніка",
+    "Одяг",
+    "Книги",
+    "Іграшки та ігри",
+    "Дім та кухня",
+    "Краса та особистий догляд",
+    "Спорт та відпочинок на відкритому повітрі",
+    "Здоров'я та побут",
+    "Інструменти та вдосконалення дому",
+    "Автомобільна продукція",
+    "Продукти та вишукана їжа",
+    "Дитина",
+    "Фільми та телебачення",
+    "Товари для домашніх тварин",
+    "Офісні товари",
+    "Ручна робота",
+    "Amazon Launchpad",
+    "Промисловість та наука",
+    "Цифрова музика",
+    "Мистецтво, ремесла та шиття",
+    "Колекціонування та образотворче мистецтво",
+    "Подарункові картки",
+    "Електроніка",
+    "Комп'ютери",
+    "Прилади",
+    "Книги",
+    "Фільми",
+    "Музика",
+    "Одяг",
+    "Взуття",
+    "Аксесуари",
+    "Ювелірні вироби",
+    "Їжа",
+    "Іграшки",
+    "Ігри",
+    "Дім",
+    "Кухня",
+    "Меблі",
+    "Здоров'я",
+    "Краса",
+    "Спорт",
+    "Відпочинок на відкритому повітрі",
+    "Автомобіль",
+    "Промисловість",
+    "Товари для домашніх тварин",
+    "Інструменти",
+    "Продукти",
+    "Малюки",
+    "Офіс",
+    "Шкільні приладдя",
+  ]);
+
+  inputField.addEventListener("input", () => {
+    const inputValue = inputField.value.toLowerCase();
+    let matches = [...options].filter((option) =>
+      option.toLowerCase().startsWith(inputValue)
+    );
+    displayMatches(matches);
+  });
+
+  const hideNoMatchesMessage = () => {
+    const noMatchesDiv = listContainer.querySelector("div");
+    if (noMatchesDiv && noMatchesDiv.textContent === "No matches found...") {
+      setTimeout(() => {
+        noMatchesDiv.style.display = "none";
+      }, 3000);
+    }
+  };
+
+  const displayMatches = (matches) => {
+    listContainer.innerHTML = matches.length
+      ? matches.map((match) => `<div>${match}</div>`).join("")
+      : "<div>No matches found...</div>";
+
+    listContainer.classList.toggle("show", matches.length > 0);
+    listContainer.classList.toggle("hide", matches.length === 0);
+    selectedOptionIndex = -1;
+
+    hideNoMatchesMessage();
+  };
+
+  listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+
+  inputField.addEventListener("keydown", function (e) {
+    const listItems = listContainer.querySelectorAll("div");
+    if (e.key === "Enter" || e.key === "Tab") {
+      if (selectedOptionIndex >= 0 && listItems.length > 0) {
+        inputField.value = listItems[selectedOptionIndex].textContent;
+        listContainer.innerHTML = "";
+        inputField.focus();
+      }
+    } else if (
+      (e.key === "ArrowUp" || e.key === "ArrowDown") &&
+      listItems.length > 0
+    ) {
+      if (e.key === "ArrowUp" && selectedOptionIndex > 0) {
+        selectedOptionIndex--;
+      } else if (
+        e.key === "ArrowDown" &&
+        selectedOptionIndex < listItems.length - 1
+      ) {
+        selectedOptionIndex++;
+      }
+
+      listItems.forEach((item, index) => {
+        if (index === selectedOptionIndex) {
+          item.classList.add("selected");
+          inputField.value = item.textContent;
+        } else {
+          item.classList.remove("selected");
+        }
+      });
+    }
+  });
+
+  const updateListVisibility = (matches) => {
+    displayMatches(matches);
+  };
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Код, який ми хочемо виконати, коли структура DOM завантажена і готова для маніпуляцій.
+  const inputField = document.querySelector(".header__navigation-search-field");
+  const listContainer = document.querySelector(".autocomplete__list");
+
+  let selectedOptionIndex = -1;
+
+  const options = [
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Toys & Games",
+    "Home & Kitchen",
+    "Beauty & Personal Care",
+    "Sports & Outdoors",
+    "Health & Household",
+    "Tools & Home Improvement",
+    "Automotive",
+    "Grocery & Gourmet Food",
+    "Baby",
+    "Movies & TV",
+    "Pet Supplies",
+    "Office Products",
+    "Handmade",
+    "Amazon Launchpad",
+    "Industrial & Scientific",
+    "Digital Music",
+    "Arts, Crafts & Sewing",
+    "Collectibles & Fine Art",
+    "Gift Cards",
+    "Electronics",
+    "Computers",
+    "Appliances",
+    "Books",
+    "Movies",
+    "Music",
+    "Clothing",
+    "Footwear",
+    "Accessories",
+    "Jewelry",
+    "Food",
+    "Toys",
+    "Games",
+    "Home",
+    "Kitchen",
+    "Furniture",
+    "Health",
+    "Beauty",
+    "Sports",
+    "Outdoors",
+    "Automotive",
+    "Industrial",
+    "Pet Supplies",
+    "Tools",
+    "Grocery",
+    "Baby",
+    "Kids",
+    "Office",
+    "School Supplies",
+    "Electronics",
+    "Clothing",
+    "Books",
+    "Toys & Games",
+    "Home & Kitchen",
+    "Beauty & Personal Care",
+    "Sports & Outdoors",
+    "Health & Household",
+    "Tools & Home Improvement",
+    "Automotive",
+    "Grocery & Gourmet Food",
+    "Baby",
+    "Movies & TV",
+    "Pet Supplies",
+    "Office Products",
+    "Handmade",
+    "Amazon Launchpad",
+    "Industrial & Scientific",
+    "Digital Music",
+    "Arts, Crafts & Sewing",
+    "Collectibles & Fine Art",
+    "Gift Cards",
+    "Electronics",
+    "Computers",
+    "Appliances",
+    "Books",
+    "Movies",
+    "Music",
+    "Clothing",
+    "Footwear",
+    "Accessories",
+    "Jewelry",
+    "Food",
+    "Toys",
+    "Games",
+    "Home",
+    "Kitchen",
+    "Furniture",
+    "Health",
+    "Beauty",
+    "Sports",
+    "Outdoors",
+    "Automotive",
+    "Industrial",
+    "Pet Supplies",
+    "Tools",
+    "Grocery",
+    "Baby",
+    "Kids",
+    "Office",
+    "School Supplies",
+    "Електроніка",
+    "Одяг",
+    "Книги",
+    "Іграшки та ігри",
+    "Дім та кухня",
+    "Краса та особистий догляд",
+    "Спорт та відпочинок на відкритому повітрі",
+    "Здоров'я та побут",
+    "Інструменти та вдосконалення дому",
+    "Автомобільна продукція",
+    "Продукти та вишукана їжа",
+    "Дитина",
+    "Фільми та телебачення",
+    "Товари для домашніх тварин",
+    "Офісні товари",
+    "Ручна робота",
+    "Amazon Launchpad",
+    "Промисловість та наука",
+    "Цифрова музика",
+    "Мистецтво, ремесла та шиття",
+    "Колекціонування та образотворче мистецтво",
+    "Подарункові картки",
+    "Електроніка",
+    "Комп'ютери",
+    "Прилади",
+    "Книги",
+    "Фільми",
+    "Музика",
+    "Одяг",
+    "Взуття",
+    "Аксесуари",
+    "Ювелірні вироби",
+    "Їжа",
+    "Іграшки",
+    "Ігри",
+    "Дім",
+    "Кухня",
+    "Меблі",
+    "Здоров'я",
+    "Краса",
+    "Спорт",
+    "Відпочинок на відкритому повітрі",
+    "Автомобіль",
+    "Промисловість",
+    "Товари для домашніх тварин",
+    "Інструменти",
+    "Продукти",
+    "Малюки",
+    "Офіс",
+    "Шкільні приладдя",
+  ];
+
+  inputField.addEventListener("input", () => {
+    const inputValue = inputField.value.toLowerCase();
+    let matches = [];
+
+    if (inputValue.length > 0) {
+      matches = options.filter((option) =>
+        option.toLowerCase().startsWith(inputValue)
+      );
+    }
+
+    displayMatches(matches);
+  });
+
+  const displayMatches = (matches) => {
+    if (matches.length > 0) {
+      const listItems = matches.map((match) => `<div>${match}</div>`).join("");
+      listContainer.innerHTML = listItems;
+      selectedOptionIndex = -1;
+    } else {
+      listContainer.innerHTML = "";
+    }
+  };
+
+  listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+
+  inputField.addEventListener("keydown", function (e) {
+    if (e.key === "Enter" || e.key === "Tab") {
+      const firstMatch = listContainer.querySelector("div");
+      if (firstMatch) {
+        inputField.value = firstMatch.textContent;
+        listContainer.innerHTML = "";
+        inputField.focus();
+      }
+    } else if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+      const listItems = listContainer.querySelectorAll("div");
+      if (listItems.length > 0) {
+        if (e.key === "ArrowUp" && selectedOptionIndex > 0) {
+          selectedOptionIndex--;
+        } else if (
+          e.key === "ArrowDown" &&
+          selectedOptionIndex < listItems.length - 1
+        ) {
+          selectedOptionIndex++;
+        }
+
+        listItems.forEach((item, index) => {
+          if (index === selectedOptionIndex) {
+            item.classList.add("selected");
+            inputField.value = item.textContent;
+          } else {
+            item.classList.remove("selected");
+          }
+        });
+      }
+    }
+  });
+
+  listContainer.addEventListener("click", (e) => {
+    if (e.target.tagName === "DIV") {
+      inputField.value = e.target.textContent;
+      listContainer.innerHTML = "";
+      inputField.focus();
+    }
+  });
+});
+

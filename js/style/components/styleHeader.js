@@ -71,29 +71,7 @@ const headerStyle = `
         height: 100%;
         padding-left: 15px;
     }
-    .autocomplete__list {
-        overflow: hidden;
-        background-color: var(--white);
-        border: 1px solid var(--border-select);
-        border-bottom: none;
-        border-top: none;
-
-    }
-    .autocomplete__list div {
-        padding: 10px 15px;
-        cursor: pointer;
-        border-bottom: 1px solid var(--border-select);
-        z-index: 2;
-        position: sticky;
-        transition: 0.5s;
-    }
-    .autocomplete__list div:hover,
-    .selected {
-        background-color: var(--select);
-    }
-    .autocomplete__list div:first-child {
-        border-top: 1px solid var(--border-select);
-    }
+    
 
     .header__navigation-search-btn {
         width: 45px;

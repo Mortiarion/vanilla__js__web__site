@@ -193,3 +193,8 @@ const autoComplete = createdElements(
   "autocomplete__list",
   headerNavigationFormFill
 );
+const autoCompleteMessage = createdElements(
+  "div",
+  "autocomplete__message",
+  headerNavigationFormFill
+);

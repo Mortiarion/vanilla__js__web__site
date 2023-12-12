@@ -1,4 +1,4 @@
-const customScrollBar = `
+const styleCustomScrollBar = `
     :root {
         --scrollbar-width: 6px;
         --scrollbar-thumb-color: #00453e;
@@ -28,4 +28,4 @@ const customScrollBar = `
     }
 `;
 
-export default customScrollBar;
+export default styleCustomScrollBar;

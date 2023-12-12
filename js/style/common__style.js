@@ -1,6 +1,7 @@
 import styleCustomSelect from "./components/styleCustomSelect.js";
 import headerStyle from "./../style/components/styleHeader.js";
-import customScrollBar from "./components/styleCustomScrollBar.js";
+import styleCustomScrollBar from "./components/styleCustomScrollBar.js";
+import styleAutoCompleteInput from "./components/styleAutoCompleteInput.js";
 
 const styles = `
   :root {
@@ -80,6 +81,7 @@ const styles = `
     border-radius: 4px;
     transition: border 0.5s ease;
   }
+  
 
 `;
 
@@ -88,7 +90,12 @@ function addStylesToPage(styles) {
   styleElement.type = "text/css";
   styleElement.appendChild(document.createTextNode(styles));
   document.head.appendChild(styleElement);
-
 }
 
-addStylesToPage(styles + styleCustomSelect + headerStyle + customScrollBar);
+addStylesToPage(
+  styles +
+    styleCustomSelect +
+    headerStyle +
+    styleCustomScrollBar +
+    styleAutoCompleteInput
+);
