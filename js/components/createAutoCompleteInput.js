@@ -231,6 +231,13 @@ document.addEventListener("DOMContentLoaded", () => {
           inputField.focus();
         }
       }
+      /**
+       * При натисканні клавіші Enter або Tab:
+          Перевіряється, чи selectedOptionIndex є допустимим індексом.
+          Якщо умова виконується, встановлюється значення поля вводу inputField на текст виділеного пункту.
+          Очищається вміст listContainer.
+          Фокус переміщується на поле вводу.
+       */
     } else if (e.key == "ArrowUp" || e.key == "ArrowDown") {
       const listItems = listContainer.querySelectorAll("div");
       if (listItems.length > 0) {
@@ -244,6 +251,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
       }
     }
+    /**
+     * При натисканні клавіш ArrowUp або ArrowDown:
+      Отримуються всі елементи <div> у listContainer.
+      Перевіряється, чи список елементів не є порожнім.
+      Якщо натиснута клавіша ArrowUp і selectedOptionIndex 
+      більше 0, він зменшується.
+      Якщо натиснута клавіша ArrowDown і selectedOptionIndex 
+      менше за останній індекс у listItems, він збільшується.
+     */
 
     listItems.forEach((item, index) => {
       if (index === selectedOptionIndex) {
@@ -254,5 +270,5 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   });
-  
+
 });
