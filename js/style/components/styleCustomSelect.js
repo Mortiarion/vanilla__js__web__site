@@ -2,7 +2,6 @@ const styleCustomSelect = `
     .custom__select {
         position: relative;
     }
-
     .custom__select-trigger {
         position: relative;
         border-radius: 4px 0 0 4px;
@@ -43,7 +42,9 @@ const styleCustomSelect = `
         overflow: auto;
         border-radius: 4px;
     }
-    .custom__select.is__active .custom__select-options {
+    .custom__select.active .custom__select-options,
+    .custom__select.active {
+        z-index: 1000;
         display: block;
     }
     .custom__select-option {

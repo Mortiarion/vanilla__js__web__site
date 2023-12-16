@@ -2,6 +2,8 @@ import styleCustomSelect from "./components/styleCustomSelect.js";
 import headerStyle from "./../style/components/styleHeader.js";
 import styleCustomScrollBar from "./components/styleCustomScrollBar.js";
 import styleAutoCompleteInput from "./components/styleAutoCompleteInput.js";
+import styleOverlay from "./components/styleOverlay.js";
+import styleFlyOutElement from "./components/styleFlyOutElement.js";
 
 const styles = `
   :root {
@@ -97,5 +99,7 @@ addStylesToPage(
     styleCustomSelect +
     headerStyle +
     styleCustomScrollBar +
-    styleAutoCompleteInput
+    styleAutoCompleteInput +
+    styleOverlay +
+    styleFlyOutElement
 );

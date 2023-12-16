@@ -5,13 +5,16 @@ import "./style/common__style.js";
 import "./components/customSelect.js";
 import "./../fonts/fontsLink.js";
 import "./components/createAutoCompleteInput.js"
+import "./components/createOverlay.js";
+import "./components/createFlyOutElement.js";
+
+
 
 const wrapper = createdElements("div", "wrapper");
 
 const header = createdElements("div", "header", wrapper);
 const main = createdElements("div", "main", wrapper);
 const footer = createdElements("div", "footer", wrapper);
-
 const headerTop = createdElements("div", "header__top", header);
 const headerBottom = createdElements("div", "header__bottom", header);
 

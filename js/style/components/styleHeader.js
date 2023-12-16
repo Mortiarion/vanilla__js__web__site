@@ -70,6 +70,11 @@ const headerStyle = `
         width: 100%;
         height: 100%;
         padding-left: 15px;
+        position: sticky;
+    }
+    .header__navigation-search-field.active,
+    .header__navigation-right-language.active {
+        z-index: 1000;
     }
     
 
@@ -82,6 +87,7 @@ const headerStyle = `
         border-left: 1px solid var(--border-select);
         cursor: pointer;
         transition: 0.5s;
+        position: sticky;
     }
     .header__navigation-search-btn:hover {
         background-color: var(--search);
@@ -106,9 +112,9 @@ const headerStyle = `
         display: flex;
         padding: 17px 25px 17px 15px;
         margin: 0 0 0 0;
-        position: relative;
         align-items: center;
         color: var(--white);
+        position: relative;
     }
     .header__navigation-right-flag {
         background-image: url("./img/nav-sprite-global-country.png");

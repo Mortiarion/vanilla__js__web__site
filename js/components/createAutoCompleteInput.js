@@ -39,13 +39,10 @@ document.addEventListener("DOMContentLoaded", () => {
     "Arts, Crafts & Sewing",
     "Collectibles & Fine Art",
     "Gift Cards",
-    "Electronics",
-    "Computers",
     "Appliances",
     "Books",
     "Movies",
     "Music",
-    "Clothing",
     "Footwear",
     "Accessories",
     "Jewelry",
@@ -68,8 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
     "Kids",
     "Office",
     "School Supplies",
-    "Electronics",
-    "Clothing",
     "Books",
     "Toys & Games",
     "Home & Kitchen",
@@ -90,13 +85,11 @@ document.addEventListener("DOMContentLoaded", () => {
     "Arts, Crafts & Sewing",
     "Collectibles & Fine Art",
     "Gift Cards",
-    "Electronics",
     "Computers",
     "Appliances",
     "Books",
     "Movies",
     "Music",
-    "Clothing",
     "Footwear",
     "Accessories",
     "Jewelry",
@@ -171,13 +164,16 @@ document.addEventListener("DOMContentLoaded", () => {
     "Шкільні приладдя",
   ];
 
+  const uniqueOptions = [...new Set(options)];
+  // змінна для унікальних значень без повторення
+
   inputField.addEventListener("input", () => {
     const inputValue = inputField.value.toLowerCase();
 
     let matches = [];
 
     if (inputValue.length > 0) {
-      matches = options.filter(
+      matches = uniqueOptions.filter(
         // Співпадіння - matches
         (option) => option.toLowerCase().startsWith(inputValue)
         // берем пустий масив = присвоюєм йому отфільтрований масив option

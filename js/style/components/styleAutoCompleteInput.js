@@ -22,12 +22,13 @@ const styleAutoCompleteInput = `
     .autocomplete__list div:first-child {
         border-top: 1px solid var(--border-select);
     }
-    .autocomplete__list.show {
+    .header__navigation-search-field.show,
+    .autocomplete__list.show,
+    .autocomplete__message.show {
         opacity: 1;
+        position: relative;
+        z-index: 1000;
     }
-
-
-
     .autocomplete__message.show {
         opacity: 1;
     }
@@ -42,18 +43,6 @@ const styleAutoCompleteInput = `
     .autocomplete__message div{
         padding: 10px 15px;
     }
-
-
-
-
-
-
-
-
-
-
-
- 
 `;
 
 export default styleAutoCompleteInput;
