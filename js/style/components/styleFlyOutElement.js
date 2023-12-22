@@ -1,8 +1,8 @@
 const styleFlyOutElement = `
     .hover__element {
         display: none;
-        top: 6%;
-        right: 11.3%;
+        top: 109%;
+        right: -168.7%;
         position: absolute;
         width: 240px;
         background-color: #fff;
@@ -11,7 +11,7 @@ const styleFlyOutElement = `
         border-radius: 3px;
         padding: 15px;
     }
-    .hover__element .triangle {
+    .hover__element .triangles {
         top: -19px;
         left: 99px;
         border-style: solid;

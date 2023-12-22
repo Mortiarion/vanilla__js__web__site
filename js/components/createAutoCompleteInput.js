@@ -195,6 +195,7 @@ document.addEventListener("DOMContentLoaded", () => {
       selectedOptionIndex = -1;
     } else {
       if (inputField.value.trim().length === 0) {
+      inputField.classList.add("show");
         // якщо строка пуста провірка
         listContainer.classList.remove("show");
         listContainer.innerHTML = "";

@@ -1,7 +1,8 @@
-const flyOutElementApendHtml = () => {
-    const flyOutElementApendMain = `
-        <div class="hover__element ">
-            <div class="triangle"></div>
+document.addEventListener("DOMContentLoaded", () => {
+    const flyOutElementApendHtml = () => {
+        const flyOutElementApendMain = `
+
+            <div class="triangles"></div>
             <div id="nav-flyout-icp" class="nav-flyout">
                 
                 <div class="nav-template nav-flyout-content">
@@ -107,32 +108,48 @@ const flyOutElementApendHtml = () => {
                 </a>
                 </div>
             </div>
-        </div>
-`;
 
-    const body = document.body;
-    body.innerHTML = flyOutElementApendMain;
-};
+    `;
 
-flyOutElementApendHtml();
+        const creatHoverElement = document.createElement('div');
+        creatHoverElement.className = "hover__element";
+        const languageBarApend = document.querySelector(
+            ".header__navigation-right-language"
+        );
+        languageBarApend.appendChild(creatHoverElement);
+        creatHoverElement.innerHTML = flyOutElementApendMain;
+    };
 
-document.addEventListener("DOMContentLoaded", () => {
-    const languageMenuClick = document.querySelector(
-        ".header__navigation-right-language"
-    );
+    flyOutElementApendHtml();
+
+    const languageMenuClick = document.querySelector(".header__navigation-right-language");
     const hoverElement = document.querySelector(".hover__element ");
 
-    const clickLanguageBar = () => {
-        languageMenuClick.addEventListener("click", () => {
-            if (!hoverElement.classList.contains("is__active-hover-element")) {
-                hoverElement.classList.add("is__active-hover-element");
-                languageMenuClick.classList.add("hover__element-active");
-            } else {
-                hoverElement.classList.remove("is__active-hover-element");
-                languageMenuClick.classList.remove("hover__element-active");
-            } 
-        });
+    const openLanguageBar = () => {
+        hoverElement.classList.add("is__active-hover-element");
+        languageMenuClick.classList.add("hover__element-active");
+    }
+    const closeLanguageBar = () => {
+        hoverElement.classList.remove("is__active-hover-element");
+        languageMenuClick.classList.remove("hover__element-active");
     }
 
-    clickLanguageBar();
+    const interactiveFlyOut = (e) => {
+        const isLanguageMenuClick = e.target === languageMenuClick;
+        const isHoverElement = e.target === hoverElement;
+
+        if (isLanguageMenuClick || isHoverElement) {
+            if (!hoverElement.classList.contains("is__active-hover-element")) {
+                openLanguageBar();
+            } else {
+                closeLanguageBar();
+            }
+        } else {
+            closeLanguageBar();
+        }
+        
+    }
+
+    document.addEventListener("click", interactiveFlyOut);
+
 });

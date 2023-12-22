@@ -123,11 +123,13 @@ const headerStyle = `
         height: 16px;
         background-position: 0% 47%;
         margin: 0 5px 0 0;
+        pointer-events: none;
     }
     .language {
         font-weight: 700;
         font-family: var(--second-fonts);
         font-size: 14px;
+        pointer-events: none;
     }
     .header__navigation-right-language .triangle {
         right: 13px;

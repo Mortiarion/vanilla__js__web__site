@@ -2783,3 +2783,227 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const createdOverlay = () => {
+    const createOverlay = document.createElement("div");
+    createOverlay.className = "overlay";
+    const body = document.body;
+    body.appendChild(createOverlay);
+    return createOverlay;
+  };
+
+  createdOverlay();
+
+  const overlay = document.querySelector(".overlay");
+
+  const overlayCustomTrigger = document.querySelector(
+    ".custom__select-trigger"
+  );
+  const customSelectOptions = document.querySelectorAll(
+    ".custom__select-option"
+  );
+  const headerNavigationSearchField = document.querySelector(
+    ".header__navigation-search-field"
+  );
+  const autocompleteList = document.querySelector(".autocomplete__list");
+
+  const handleOverlayInteraction = (event) => {
+    const isOverlayCustomTrigger = event.target === overlayCustomTrigger;
+    const isEscapeKey = event.key === "Escape";
+    const isOverlay = event.target.classList.contains("overlay");
+    const isCustomSelectOption = Array.from(customSelectOptions).includes(
+      event.target
+    );
+    const isheaderNavigationSearchField =
+      event.target === headerNavigationSearchField;
+    const isAutocompleteList = event.target === autocompleteList;
+    const isArrowUpKey = event.key === "ArrowUp";
+    const isArrowDownKey = event.key === "ArrowDown";
+    const isBackspaceKey = event.key === "Backspace";
+    const isArrowLeftKey = event.key === "ArrowLeft";
+    const isArrowRightKey = event.key === "ArrowRight";
+    const isDeleteKey = event.key === "Delete";
+    if (
+      (isEscapeKey ||
+        isArrowUpKey ||
+        isArrowDownKey ||
+        isBackspaceKey ||
+        isDeleteKey ||
+        isArrowLeftKey ||
+        isArrowRightKey) &&
+      overlay.classList.contains("active")
+    ) {
+      openCloseOverlay();
+    }
+    if (isEscapeKey && !overlay.classList.contains("active")) {
+      openCloseOverlay(isOverlayCustomTrigger, isEscapeKey);
+    }
+    if (
+      isOverlayCustomTrigger ||
+      isEscapeKey ||
+      isOverlay ||
+      isCustomSelectOption ||
+      isheaderNavigationSearchField ||
+      isAutocompleteList
+    ) {
+      openCloseOverlay();
+    }
+  };
+
+  const openCloseOverlay = () => {
+    const isActive = overlay.classList.contains("active");
+    overlay.classList.toggle("active");
+    if (!headerNavigationSearchField.classList.contains("show")) {
+      headerNavigationSearchField.classList.toggle("show");
+    }
+
+    if (!isActive) {
+      const firstFocusableElement = overlay.querySelector(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex=" - 1"])'
+      );
+      if (firstFocusableElement) {
+        firstFocusableElement.focus();
+      }
+    }
+  };
+
+  document.addEventListener("click", handleOverlayInteraction);
+  document.addEventListener("keydown", handleOverlayInteraction);
+  headerNavigationSearchField.addEventListener(
+    "input",
+    handleOverlayInteraction
+  );
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const createdOverlay = () => {
+    const createOverlay = document.createElement("div");
+    createOverlay.className = "overlay";
+    const body = document.body;
+    body.appendChild(createOverlay);
+    return createOverlay;
+  };
+
+  createdOverlay();
+
+  const overlay = document.querySelector(".overlay");
+
+  const overlayCustomTrigger = document.querySelector(
+    ".custom__select-trigger"
+  );
+  const customSelectOptions = document.querySelectorAll(
+    ".custom__select-option"
+  );
+  const headerNavigationSearchField = document.querySelector(
+    ".header__navigation-search-field"
+  );
+  const autocompleteList = document.querySelector(".autocomplete__list");
+
+  const handleOverlayInteraction = (event) => {
+    const isOverlayCustomTrigger = event.target === overlayCustomTrigger;
+    const isEscapeKey = event.key === "Escape";
+    const isOverlay = event.target.classList.contains("overlay");
+    const isCustomSelectOption = Array.from(customSelectOptions).includes(
+      event.target
+    );
+    const isheaderNavigationSearchField =
+      event.target === headerNavigationSearchField;
+    const isAutocompleteList = event.target === autocompleteList;
+    const isArrowUpKey = event.key === "ArrowUp";
+    const isArrowDownKey = event.key === "ArrowDown";
+    const isBackspaceKey = event.key === "Backspace";
+    const isArrowLeftKey = event.key === "ArrowLeft";
+    const isArrowRightKey = event.key === "ArrowRight";
+    const isDeleteKey = event.key === "Delete";
+    const isEnterKey = event.key === "Enter";
+    if (
+      (isEscapeKey ||
+        isArrowUpKey ||
+        isArrowDownKey ||
+        isDeleteKey ||
+        isBackspaceKey ||
+        isArrowLeftKey ||
+        isArrowRightKey) &&
+      overlay.classList.contains("active")
+    ) {
+      openCloseOverlay();
+    }
+    if (isEscapeKey && !overlay.classList.contains("active")) {
+      openCloseOverlay(isOverlayCustomTrigger, isEscapeKey);
+    }
+    if (isEnterKey) {
+      overlay.classList.remove("active");
+    }
+    if (isBackspaceKey) {
+      return;
+    }
+    if (
+      isOverlayCustomTrigger ||
+      isEscapeKey ||
+      isOverlay ||
+      isCustomSelectOption ||
+      isheaderNavigationSearchField ||
+      isAutocompleteList
+    ) {
+      openCloseOverlay();
+    }
+  };
+
+  const openCloseOverlay = () => {
+    const isActive = overlay.classList.contains("active");
+    overlay.classList.toggle("active");
+    if (!headerNavigationSearchField.classList.contains("show")) {
+      headerNavigationSearchField.classList.toggle("show");
+    }
+
+    if (!isActive) {
+      const firstFocusableElement = overlay.querySelector(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex=" - 1"])'
+      );
+      if (firstFocusableElement) {
+        firstFocusableElement.focus();
+      }
+    }
+  };
+
+  document.addEventListener("click", handleOverlayInteraction);
+  document.addEventListener("keydown", handleOverlayInteraction);
+  headerNavigationSearchField.addEventListener(
+    "input",
+    handleOverlayInteraction
+  );
+});
